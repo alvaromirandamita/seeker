@@ -1,0 +1,394 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de Parkings",
+        "description": "Documentación de la API REST para gestionar parkings",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/parkings": {
+            "get": {
+                "tags": [
+                    "Parkings"
+                ],
+                "summary": "Listar parkings",
+                "operationId": "906b203d7aa2fe58b5c3c0a767f95b8d",
+                "responses": {
+                    "200": {
+                        "description": "Listado de parkings (puede ser vacío)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 12
+                                            },
+                                            "nombre": {
+                                                "type": "string",
+                                                "example": "Parking Central"
+                                            },
+                                            "direccion": {
+                                                "type": "string",
+                                                "example": "Av. Siempre Viva 123"
+                                            },
+                                            "latitud": {
+                                                "type": "string",
+                                                "example": "-34.6037220"
+                                            },
+                                            "longitud": {
+                                                "type": "string",
+                                                "example": "-58.3815920"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date-time",
+                                                "example": "2025-08-05T19:46:22.000000Z"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date-time",
+                                                "example": "2025-08-05T19:46:22.000000Z"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Parkings"
+                ],
+                "summary": "Crear un nuevo parking",
+                "operationId": "storeParking",
+                "requestBody": {
+                    "description": "Datos necesarios para crear un nuevo parking",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "direccion",
+                                    "latitud",
+                                    "longitud"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Parking Central"
+                                    },
+                                    "direccion": {
+                                        "type": "string",
+                                        "example": "Av. Siempre Viva 123"
+                                    },
+                                    "latitud": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": -34.603722
+                                    },
+                                    "longitud": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": -58.381592
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Parking creado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "nombre": {
+                                            "type": "string",
+                                            "example": "Parking Central"
+                                        },
+                                        "direccion": {
+                                            "type": "string",
+                                            "example": "Av. Siempre Viva 123"
+                                        },
+                                        "latitud": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": -34.603722
+                                        },
+                                        "longitud": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": -58.381592
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-08-05T10:30:00Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-08-05T10:30:00Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Datos inválidos o incompletos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "nombre": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "El campo nombre es obligatorio."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/parkings/{id}": {
+            "get": {
+                "tags": [
+                    "Parkings"
+                ],
+                "summary": "Obtener un parking por ID",
+                "operationId": "e52a76d93475b17397e56b9c3a9a1507",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Parking encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 11
+                                        },
+                                        "nombre": {
+                                            "type": "string",
+                                            "example": "Parking Central"
+                                        },
+                                        "direccion": {
+                                            "type": "string",
+                                            "example": "Av. Siempre Viva 123"
+                                        },
+                                        "latitud": {
+                                            "type": "string",
+                                            "example": "-34.6037220"
+                                        },
+                                        "longitud": {
+                                            "type": "string",
+                                            "example": "-35.0000000"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-08-05T19:36:48.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-08-05T19:36:48.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Parking no encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Parking no encontrado"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/parkings/nearest": {
+            "get": {
+                "tags": [
+                    "Parkings"
+                ],
+                "summary": "Obtener el parking más cercano",
+                "operationId": "cf9a0c9c1cb91c36053cc93b6b4cf8ee",
+                "parameters": [
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "description": "Latitud entre -90 y 90",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "example": -34.6
+                        }
+                    },
+                    {
+                        "name": "lng",
+                        "in": "query",
+                        "description": "Longitud entre -180 y 180",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "example": -58.38
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Parking más cercano retornado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "nombre": {
+                                            "type": "string",
+                                            "example": "Parking Central"
+                                        },
+                                        "direccion": {
+                                            "type": "string",
+                                            "example": "Av. Siempre Viva 123"
+                                        },
+                                        "latitud": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": -34.603722
+                                        },
+                                        "longitud": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": -58.381592
+                                        },
+                                        "distancia": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 0.5
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No hay parkings registrados",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No hay parkings registrados"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error de validación",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The lat field must be a number. (and 1 more error)"
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "lat": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The lat field must be a number."
+                                                    }
+                                                },
+                                                "lng": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The lng field is required."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Parkings",
+            "description": "Parkings"
+        }
+    ]
+}
