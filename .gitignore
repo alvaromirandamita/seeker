@@ -1,0 +1,32 @@
+# Laravel project (en parkings-api/)
+parkings-api/.env.backup
+parkings-api/.env.production
+parkings-api/.phpactor.json
+parkings-api/.phpunit.result.cache
+parkings-api/.phpunit.cache
+parkings-api/.fleet
+parkings-api/.idea/
+parkings-api/.nova/
+parkings-api/.vscode/
+parkings-api/.zed/
+parkings-api/auth.json
+parkings-api/node_modules/
+parkings-api/public/build
+parkings-api/public/hot
+parkings-api/public/storage
+parkings-api/storage/*.key
+parkings-api/storage/pail
+parkings-api/vendor/
+parkings-api/Homestead.json
+parkings-api/Homestead.yaml
+
+# Logs y archivos temporales
+*.log
+.DS_Store
+Thumbs.db
+
+# IDEs y editores (globales)
+.idea/
+.vscode/
+*.swp
+

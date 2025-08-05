@@ -1,0 +1,49 @@
+services:
+  app:
+    build:
+      context: ./parkings-api
+      dockerfile: ../docker/php/Dockerfile
+      args:
+        user: alvaromiranda
+        uid: 1000
+    container_name: parkings-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./parkings-api:/var/www
+    networks:
+      - laravel
+  nginx:
+    image: nginx:latest
+    container_name: parkings-nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./parkings-api:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - laravel
+  mysql:
+    image: mysql:8.0
+    container_name: parkings-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: parkings_db
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - laravel
+
+volumes:
+  db_data:
+
+networks:
+  laravel:
