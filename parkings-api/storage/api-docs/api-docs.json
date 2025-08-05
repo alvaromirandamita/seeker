@@ -297,32 +297,79 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "id": {
-                                            "type": "integer",
-                                            "example": 1
-                                        },
-                                        "nombre": {
+                                        "status": {
                                             "type": "string",
-                                            "example": "Parking Central"
+                                            "example": "success"
                                         },
-                                        "direccion": {
+                                        "message": {
                                             "type": "string",
-                                            "example": "Av. Siempre Viva 123"
+                                            "example": "El parking más cercano está a más de 500 metros"
                                         },
-                                        "latitud": {
-                                            "type": "number",
-                                            "format": "float",
-                                            "example": -34.603722
-                                        },
-                                        "longitud": {
-                                            "type": "number",
-                                            "format": "float",
-                                            "example": -58.381592
-                                        },
-                                        "distancia": {
-                                            "type": "number",
-                                            "format": "float",
-                                            "example": 0.5
+                                        "data": {
+                                            "properties": {
+                                                "parking": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": 5
+                                                        },
+                                                        "nombre": {
+                                                            "type": "string",
+                                                            "example": "Parking San Telmo"
+                                                        },
+                                                        "direccion": {
+                                                            "type": "string",
+                                                            "example": "Defensa 800"
+                                                        },
+                                                        "latitud": {
+                                                            "type": "string",
+                                                            "example": "-34.6181300"
+                                                        },
+                                                        "longitud": {
+                                                            "type": "string",
+                                                            "example": "-58.3737070"
+                                                        },
+                                                        "created_at": {
+                                                            "type": "string",
+                                                            "format": "date-time",
+                                                            "example": "2025-08-05T20:17:58.000000Z"
+                                                        },
+                                                        "updated_at": {
+                                                            "type": "string",
+                                                            "format": "date-time",
+                                                            "example": "2025-08-05T20:17:58.000000Z"
+                                                        },
+                                                        "distance": {
+                                                            "type": "number",
+                                                            "format": "float",
+                                                            "example": 7164813.13
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "distance_meters": {
+                                                    "type": "integer",
+                                                    "example": 7164813
+                                                },
+                                                "is_far": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "requested_coordinates": {
+                                                    "properties": {
+                                                        "lat": {
+                                                            "type": "string",
+                                                            "example": "0"
+                                                        },
+                                                        "lng": {
+                                                            "type": "string",
+                                                            "example": "0"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
                                         }
                                     },
                                     "type": "object"

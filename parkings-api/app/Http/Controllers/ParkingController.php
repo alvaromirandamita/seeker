@@ -24,30 +24,30 @@ class ParkingController extends Controller
 {
 
 
-   /**
- * @OA\Get(
- *     path="/api/parkings",
- *     summary="Listar parkings",
- *     tags={"Parkings"},
- *     @OA\Response(
- *         response=200,
- *         description="Listado de parkings (puede ser vacío)",
- *         @OA\JsonContent(
- *             type="array",
- *             @OA\Items(
- *                 type="object",
- *                 @OA\Property(property="id", type="integer", example=12),
- *                 @OA\Property(property="nombre", type="string", example="Parking Central"),
- *                 @OA\Property(property="direccion", type="string", example="Av. Siempre Viva 123"),
- *                 @OA\Property(property="latitud", type="string", example="-34.6037220"),
- *                 @OA\Property(property="longitud", type="string", example="-58.3815920"),
- *                 @OA\Property(property="created_at", type="string", format="date-time", example="2025-08-05T19:46:22.000000Z"),
- *                 @OA\Property(property="updated_at", type="string", format="date-time", example="2025-08-05T19:46:22.000000Z")
- *             )
- *         )
- *     )
- * )
- */
+    /**
+     * @OA\Get(
+     *     path="/api/parkings",
+     *     summary="Listar parkings",
+     *     tags={"Parkings"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Listado de parkings (puede ser vacío)",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(
+     *                 type="object",
+     *                 @OA\Property(property="id", type="integer", example=12),
+     *                 @OA\Property(property="nombre", type="string", example="Parking Central"),
+     *                 @OA\Property(property="direccion", type="string", example="Av. Siempre Viva 123"),
+     *                 @OA\Property(property="latitud", type="string", example="-34.6037220"),
+     *                 @OA\Property(property="longitud", type="string", example="-58.3815920"),
+     *                 @OA\Property(property="created_at", type="string", format="date-time", example="2025-08-05T19:46:22.000000Z"),
+     *                 @OA\Property(property="updated_at", type="string", format="date-time", example="2025-08-05T19:46:22.000000Z")
+     *             )
+     *         )
+     *     )
+     * )
+     */
 
     public function index()
     {
@@ -55,56 +55,56 @@ class ParkingController extends Controller
     }
 
     /**
- * @OA\Post(
- *     path="/api/parkings",
- *     summary="Crear un nuevo parking",
- *     operationId="storeParking",
- *     tags={"Parkings"},
- *   
- *     @OA\RequestBody(
- *         required=true,
- *         description="Datos necesarios para crear un nuevo parking",
- *         @OA\JsonContent(
- *             required={"nombre","direccion","latitud","longitud"},
- *             @OA\Property(property="nombre", type="string", example="Parking Central"),
- *             @OA\Property(property="direccion", type="string", example="Av. Siempre Viva 123"),
- *             @OA\Property(property="latitud", type="number", format="float", example=-34.603722),
- *             @OA\Property(property="longitud", type="number", format="float", example=-58.381592)
- *         )
- *     ),
- *     
- *     @OA\Response(
- *         response=201,
- *         description="Parking creado exitosamente",
- *         @OA\JsonContent(
- *             @OA\Property(property="id", type="integer", example=1),
- *             @OA\Property(property="nombre", type="string", example="Parking Central"),
- *             @OA\Property(property="direccion", type="string", example="Av. Siempre Viva 123"),
- *             @OA\Property(property="latitud", type="number", format="float", example=-34.603722),
- *             @OA\Property(property="longitud", type="number", format="float", example=-58.381592),
- *             @OA\Property(property="created_at", type="string", format="date-time", example="2025-08-05T10:30:00Z"),
- *             @OA\Property(property="updated_at", type="string", format="date-time", example="2025-08-05T10:30:00Z")
- *         )
- *     ),
- *     
- *     @OA\Response(
- *         response=422,
- *         description="Datos inválidos o incompletos",
- *         @OA\JsonContent(
- *             @OA\Property(property="message", type="string", example="The given data was invalid."),
- *             @OA\Property(
- *                 property="errors",
- *                 type="object",
- *                 @OA\Property(
- *                     property="nombre",
- *                     type="array",
- *                     @OA\Items(type="string", example="El campo nombre es obligatorio.")
- *                 )
- *             )
- *         )
- *     )
- * )
- */
+     * @OA\Post(
+     *     path="/api/parkings",
+     *     summary="Crear un nuevo parking",
+     *     operationId="storeParking",
+     *     tags={"Parkings"},
+     *   
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Datos necesarios para crear un nuevo parking",
+     *         @OA\JsonContent(
+     *             required={"nombre","direccion","latitud","longitud"},
+     *             @OA\Property(property="nombre", type="string", example="Parking Central"),
+     *             @OA\Property(property="direccion", type="string", example="Av. Siempre Viva 123"),
+     *             @OA\Property(property="latitud", type="number", format="float", example=-34.603722),
+     *             @OA\Property(property="longitud", type="number", format="float", example=-58.381592)
+     *         )
+     *     ),
+     *     
+     *     @OA\Response(
+     *         response=201,
+     *         description="Parking creado exitosamente",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="id", type="integer", example=1),
+     *             @OA\Property(property="nombre", type="string", example="Parking Central"),
+     *             @OA\Property(property="direccion", type="string", example="Av. Siempre Viva 123"),
+     *             @OA\Property(property="latitud", type="number", format="float", example=-34.603722),
+     *             @OA\Property(property="longitud", type="number", format="float", example=-58.381592),
+     *             @OA\Property(property="created_at", type="string", format="date-time", example="2025-08-05T10:30:00Z"),
+     *             @OA\Property(property="updated_at", type="string", format="date-time", example="2025-08-05T10:30:00Z")
+     *         )
+     *     ),
+     *     
+     *     @OA\Response(
+     *         response=422,
+     *         description="Datos inválidos o incompletos",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
+     *             @OA\Property(
+     *                 property="errors",
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="nombre",
+     *                     type="array",
+     *                     @OA\Items(type="string", example="El campo nombre es obligatorio.")
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
+     */
 
     public function store(StoreParkingRequest $request): JsonResponse
     {
@@ -178,18 +178,36 @@ class ParkingController extends Controller
      *         @OA\Schema(type="number", format="float", example=-58.38)
      *     ),
      *
- 
-     *
      *     @OA\Response(
      *         response=200,
      *         description="Parking más cercano retornado",
      *         @OA\JsonContent(
-     *             @OA\Property(property="id", type="integer", example=1),
-     *             @OA\Property(property="nombre", type="string", example="Parking Central"),
-     *             @OA\Property(property="direccion", type="string", example="Av. Siempre Viva 123"),
-     *             @OA\Property(property="latitud", type="number", format="float", example=-34.603722),
-     *             @OA\Property(property="longitud", type="number", format="float", example=-58.381592),
-     *             @OA\Property(property="distancia", type="number", format="float", example=0.5)
+     *             @OA\Property(property="status", type="string", example="success"),
+     *             @OA\Property(property="message", type="string", example="El parking más cercano está a más de 500 metros"),
+     *             @OA\Property(
+     *                 property="data",
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="parking",
+     *                     type="object",
+     *                     @OA\Property(property="id", type="integer", example=5),
+     *                     @OA\Property(property="nombre", type="string", example="Parking San Telmo"),
+     *                     @OA\Property(property="direccion", type="string", example="Defensa 800"),
+     *                     @OA\Property(property="latitud", type="string", example="-34.6181300"),
+     *                     @OA\Property(property="longitud", type="string", example="-58.3737070"),
+     *                     @OA\Property(property="created_at", type="string", format="date-time", example="2025-08-05T20:17:58.000000Z"),
+     *                     @OA\Property(property="updated_at", type="string", format="date-time", example="2025-08-05T20:17:58.000000Z"),
+     *                     @OA\Property(property="distance", type="number", format="float", example=7164813.13)
+     *                 ),
+     *                 @OA\Property(property="distance_meters", type="integer", example=7164813),
+     *                 @OA\Property(property="is_far", type="boolean", example=true),
+     *                 @OA\Property(
+     *                     property="requested_coordinates",
+     *                     type="object",
+     *                     @OA\Property(property="lat", type="string", example="0"),
+     *                     @OA\Property(property="lng", type="string", example="0")
+     *                 )
+     *             )
      *         )
      *     ),
      *
@@ -246,8 +264,8 @@ class ParkingController extends Controller
             'lng' => $lng,
             'lat2' => $lat,
         ])
-        ->orderBy('distance')
-        ->first();
+            ->orderBy('distance')
+            ->first();
 
         if (!$nearest) {
             return response()->json(['message' => 'No hay parkings registrados'], 404);
@@ -266,10 +284,19 @@ class ParkingController extends Controller
         }
 
         return response()->json([
-            'parking' => $nearest,
-            'distance_meters' => $distance,
-            'lejos' => $distance > 500,
+            'status' => 'success',
+            'message' => $distance > 500
+                ? 'El parking más cercano está a más de 500 metros'
+                : 'Parking cercano encontrado',
+            'data' => [
+                'parking' => $nearest,
+                'distance_meters' => $distance,
+                'is_far' => $distance > 500,
+                'requested_coordinates' => [
+                    'lat' => $lat,
+                    'lng' => $lng,
+                ]
+            ]
         ]);
     }
-
 }
