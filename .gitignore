@@ -17,6 +17,7 @@ parkings-api/public/storage
 parkings-api/storage/*.key
 parkings-api/storage/pail
 parkings-api/vendor/
+parkings-api/composer.lock
 parkings-api/Homestead.json
 parkings-api/Homestead.yaml
 
